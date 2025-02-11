@@ -29,7 +29,12 @@ function Cart() {
   console.log(cart);
   return (
     <div>
-      <Link to="/menu">&larr; Back to menu</Link>
+      <Link
+        to="/menu"
+        className="text-sm text-blue-500 hover:text-blue-800 hover:underline"
+      >
+        &larr; Back to menu
+      </Link>
 
       <h2>Your cart, %NAME%</h2>
 
