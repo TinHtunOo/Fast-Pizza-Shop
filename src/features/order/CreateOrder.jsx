@@ -1,5 +1,6 @@
 import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
+import Button from "../../ui/Button";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
@@ -39,31 +40,51 @@ function CreateOrder() {
   const formErrors = useActionData();
 
   return (
-    <div>
-      <h2>Ready to order? Let&aposs go!</h2>
+    <div className="mx-5 mt-5">
+      <h2 className="mb-5 text-xl font-semibold">
+        Ready to order? Let&aposs go!
+      </h2>
 
       <Form method="POST">
-        <div>
-          <label>First Name</label>
-          <input className="input" type="text" name="customer" required />
-        </div>
-
-        <div>
-          <label>Phone number</label>
-          <div>
-            <input className="input" type="tel" name="phone" required />
-          </div>
-          <div>{formErrors?.phone && <p>{formErrors.phone}</p>}</div>
-        </div>
-
-        <div>
-          <label>Address</label>
-          <div>
-            <input className="input" type="text" name="address" required />
+        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
+          <label className="sm:basis-40">First Name</label>
+          <div className="grow">
+            <input
+              className="input w-full"
+              type="text"
+              name="customer"
+              required
+            />
           </div>
         </div>
 
-        <div>
+        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
+          <label className="sm:basis-40">Phone number</label>
+          <div className="grow">
+            <input className="input w-full" type="tel" name="phone" required />
+            <div>
+              {formErrors?.phone && (
+                <p className="ms-3 mt-2 rounded-full bg-red-300 py-1 ps-4 text-xs text-red-900">
+                  {formErrors.phone}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
+          <label className="sm:basis-40">Address</label>
+          <div className="grow">
+            <input
+              className="input w-full"
+              type="text"
+              name="address"
+              required
+            />
+          </div>
+        </div>
+
+        <div className="mb-10 flex items-center gap-5">
           <input
             type="checkbox"
             name="priority"
@@ -72,17 +93,17 @@ function CreateOrder() {
             // onChange={(e) => setWithPriority(e.target.checked)}
             className="h-5 w-5 accent-red-800 transition-colors duration-300 focus:outline-none focus:ring focus:ring-red-600"
           />
-          <label htmlFor="priority">Want to yo give your order priority?</label>
+          <label className="font-medium" htmlFor="priority">
+            Want to yo give your order priority?
+          </label>
         </div>
 
         <div>
           <input type="hidden" name="cart" value={JSON.stringify(cart)} />
-          <button
-            disabled={isSubmitting}
-            className="rounded-full bg-red-800 px-4 py-2 text-lg uppercase tracking-wide text-zinc-100 transition-colors duration-300 hover:bg-red-600 focus:bg-red-600 focus:outline-none focus:ring focus:ring-red-600 focus:ring-offset-2 disabled:cursor-not-allowed"
-          >
+
+          <Button type="primary" disabled={isSubmitting}>
             {isSubmitting ? "Placing order..." : "Order now"}
-          </button>
+          </Button>
         </div>
       </Form>
     </div>
