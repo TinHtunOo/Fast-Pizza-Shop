@@ -21,7 +21,7 @@ const styles = {
 function Button({ children, disabled, to, type }) {
   if (to)
     return (
-      <Link className={styles[type]} to="/order/new">
+      <Link className={styles[type]} to={to}>
         {children}
       </Link>
     );
