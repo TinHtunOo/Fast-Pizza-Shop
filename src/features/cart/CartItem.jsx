@@ -1,9 +1,10 @@
 import { formatCurrency } from "../../utils/helpers";
 import PropTypes from "prop-types";
 import DeleteButton from "../../ui/DeleteButton";
+import UpdateQuantityButton from "./UpdateQuantityButton";
 CartItem.propTypes = {
   item: PropTypes.shape({
-    pizzaID: PropTypes.number.isRequired,
+    pizzaId: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     quantity: PropTypes.number.isRequired,
     totalPrice: PropTypes.number.isRequired,
@@ -11,7 +12,7 @@ CartItem.propTypes = {
 };
 
 function CartItem({ item }) {
-  const { pizzaID, name, quantity, totalPrice } = item;
+  const { pizzaId, name, quantity, totalPrice } = item;
 
   return (
     <li className="py-2 sm:flex sm:items-center sm:justify-between">
@@ -20,7 +21,8 @@ function CartItem({ item }) {
       </p>
       <div className="flex items-center justify-between sm:gap-6">
         <p className="text-sm font-medium">{formatCurrency(totalPrice)}</p>
-        <DeleteButton pizzaID={pizzaID} />
+        <UpdateQuantityButton pizzaId={pizzaId} quantity={quantity} />
+        <DeleteButton pizzaId={pizzaId} />
       </div>
     </li>
   );

@@ -3,13 +3,13 @@ import Button from "./Button";
 import { deleteItem } from "../features/cart/cartSlice";
 import PropTypes from "prop-types";
 
-DeleteButton.propTypes = { pizzaID: PropTypes.number.isRequired };
+DeleteButton.propTypes = { pizzaId: PropTypes.number.isRequired };
 
-function DeleteButton({ pizzaID }) {
+function DeleteButton({ pizzaId }) {
   const dispatch = useDispatch();
 
   function handleDelete() {
-    dispatch(deleteItem(pizzaID));
+    dispatch(deleteItem(pizzaId));
   }
   return (
     <Button onClick={handleDelete} type="small">

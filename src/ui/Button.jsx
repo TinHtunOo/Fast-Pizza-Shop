@@ -15,6 +15,7 @@ const base =
 const styles = {
   primary: base + " md:px-5 md:py-3 px-4 py-2  text-sm md:text-lg ",
   small: base + " px-4 py-2 text-xs",
+  round: base + " px-2 py-1 text-sm",
   secondary:
     " border border-zinc-800 rounded-full uppercase tracking-wide text-zinc-800 transition-colors duration-300 hover:bg-zinc-300 focus:bg-zinc-200 focus:outline-none focus:ring focus:ring-zinc-600 focus:ring-offset-2 disabled:cursor-not-allowed md:px-5 md:py-3 px-4 py-2 text-sm md:text-lg ",
 };

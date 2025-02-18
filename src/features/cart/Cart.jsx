@@ -18,7 +18,7 @@ function Cart() {
       <h2 className="py-3 text-xl font-semibold">Your cart, {username}</h2>
       <ul className="divide-y divide-zinc-400 border-b border-zinc-400">
         {cart.map((item) => (
-          <CartItem item={item} key={item.pizzaID} />
+          <CartItem item={item} key={item.pizzaId} />
         ))}
       </ul>
       <div className="space-x-5 pt-6">
