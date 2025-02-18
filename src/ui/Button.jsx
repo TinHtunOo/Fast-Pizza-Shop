@@ -6,6 +6,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   to: PropTypes.string,
   type: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 const base =
@@ -18,12 +19,19 @@ const styles = {
     " border border-zinc-800 rounded-full uppercase tracking-wide text-zinc-800 transition-colors duration-300 hover:bg-zinc-300 focus:bg-zinc-200 focus:outline-none focus:ring focus:ring-zinc-600 focus:ring-offset-2 disabled:cursor-not-allowed md:px-5 md:py-3 px-4 py-2 text-sm md:text-lg ",
 };
 
-function Button({ children, disabled, to, type }) {
+function Button({ children, disabled, to, type, onClick }) {
   if (to)
     return (
       <Link className={styles[type]} to={to}>
         {children}
       </Link>
+    );
+
+  if (onClick)
+    return (
+      <button onClick={onClick} className={styles[type]}>
+        {children}
+      </button>
     );
   return (
     <button disabled={disabled} className={styles[type]}>
