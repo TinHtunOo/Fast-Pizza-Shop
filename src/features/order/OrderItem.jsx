@@ -11,7 +11,6 @@ OrderItem.propTypes = {
 };
 function OrderItem({ item, isLoadingIngredients, ingredients }) {
   const { quantity, name, totalPrice } = item;
-  console.log(isLoadingIngredients, ingredients);
   return (
     <li className="py-3">
       <div className="flex items-center justify-between">
@@ -21,6 +20,9 @@ function OrderItem({ item, isLoadingIngredients, ingredients }) {
         </p>
         <p className="font-semibold">{formatCurrency(totalPrice)}</p>
       </div>
+      <p className="text-sm capitalize italic text-zinc-600">
+        {isLoadingIngredients ? "Loading..." : ingredients.join(", ")}
+      </p>
     </li>
   );
 }
